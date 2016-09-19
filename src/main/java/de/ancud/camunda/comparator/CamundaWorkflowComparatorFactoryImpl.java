@@ -1,0 +1,119 @@
+/**
+ * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ *
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ *
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ */
+
+package de.ancud.camunda.comparator;
+
+import com.liferay.portal.kernel.util.OrderByComparator;
+import com.liferay.portal.kernel.workflow.WorkflowInstance;
+import com.liferay.portal.kernel.workflow.comparator.*;
+
+public class CamundaWorkflowComparatorFactoryImpl
+	implements WorkflowComparatorFactory {
+
+	@Override
+	public OrderByComparator getDefinitionNameComparator(boolean ascending) {
+		return new WorkflowDefinitionNameComparator(
+			ascending, "name ASC, version ASC", "name DESC, version DESC",
+			new String[] {"name", "version"});
+	}
+
+	@Override
+	public OrderByComparator getInstanceEndDateComparator(boolean ascending) {
+		return new WorkflowInstanceEndDateComparator(
+			ascending, "endDate ASC, kaleoInstanceId ASC",
+			"endDate DESC, kaleoInstanceId DESC",
+			new String[] {"endDate", "kaleoInstanceId"});
+	}
+
+	@Override
+	public OrderByComparator getInstanceStartDateComparator(boolean ascending) {
+		return new WorkflowInstanceStartDateComparator(
+			ascending, "createDate ASC, kaleoInstanceId ASC",
+			"createDate DESC, kaleoInstanceId DESC",
+			new String[] {"createDate", "kaleoInstanceId"});
+	}
+
+	@Override
+	public OrderByComparator getInstanceStateComparator(boolean ascending) {
+		return new WorkflowInstanceStateComparator(
+			ascending, "state ASC, kaleoInstanceId ASC",
+			"state DESC, kaleoInstanceId DESC",
+			new String[] {"state", "kaleoInstanceId"});
+	}
+
+	@Override
+	public OrderByComparator getLogCreateDateComparator(boolean ascending) {
+		return new WorkflowLogCreateDateComparator(
+			ascending, "createDate ASC, kaleoLogId ASC",
+			"createDate DESC, kaleoLogId DESC",
+			new String[] {"createDate", "kaleoLogId"});
+	}
+
+	@Override
+	public OrderByComparator getLogUserIdComparator(boolean ascending) {
+		return new WorkflowLogUserIdComparator(
+			ascending, "userId ASC, kaleoLogId ASC",
+			"userId DESC, kaleoLogId DESC",
+			new String[] {"userId", "kaleoLogId"});
+	}
+
+	@Override
+	public OrderByComparator getTaskCompletionDateComparator(
+		boolean ascending) {
+
+		return new WorkflowTaskCompletionDateComparator(
+			ascending, "completionDate ASC, kaleoTaskId ASC",
+			"completionDate DESC, kaleoTaskId DESC",
+			new String[] {"completionDate", "kaleoTaskId"});
+	}
+
+	@Override
+	public OrderByComparator getTaskCreateDateComparator(boolean ascending) {
+		return new WorkflowTaskCreateDateComparator(
+			ascending, "createDate ASC, kaleoTaskInstanceTokenId ASC",
+			"createDate DESC, kaleoTaskInstanceTokenId DESC",
+			new String[] {"createDate", "kaleoTaskInstanceTokenId"});
+	}
+
+	@Override
+	public OrderByComparator getTaskDueDateComparator(boolean ascending) {
+		return new WorkflowTaskDueDateComparator(
+			ascending, "dueDate ASC, modifiedDate ASC, kaleoTaskId ASC",
+			"dueDate DESC, modifiedDate DESC, kaleoTaskId DESC",
+			new String[] {"dueDate", "modifiedDate", "kaleoTaskId"});
+	}
+
+	@Override
+	public OrderByComparator getTaskNameComparator(boolean ascending) {
+		return new WorkflowTaskNameComparator(
+			ascending, "name ASC, kaleoTaskId ASC",
+			"name DESC, kaleoTaskId DESC",
+			new String[] {"name", "kaleoTaskId"});
+	}
+
+	@Override
+	public OrderByComparator getTaskUserIdComparator(boolean ascending) {
+		return new WorkflowTaskUserIdComparator(
+			ascending, "userId ASC, kaleoTaskId ASC",
+			"userId DESC, kaleoTaskId DESC",
+			new String[] {"userId", "kaleoTaskId"});
+	}
+
+	@Override
+	public OrderByComparator<WorkflowInstance> getInstanceCompletedComparator(boolean ascending) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

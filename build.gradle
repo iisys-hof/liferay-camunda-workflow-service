@@ -1,0 +1,38 @@
+buildscript {
+
+	repositories {
+		mavenLocal()
+
+    maven {
+      url "https://plugins.gradle.org/m2/"
+    }
+		maven {
+			url "https://cdn.lfrs.sl/repository.liferay.com/nexus/content/groups/public"
+		}
+	}
+    
+  dependencies {
+    classpath group: "com.liferay", name: "com.liferay.gradle.plugins", version: "1.0.298"
+    classpath group: "com.liferay", name: "com.liferay.gradle.plugins.lang.merger", version: "1.0.1"
+  }
+}
+
+apply plugin: "com.liferay.defaults.plugin"
+
+dependencies {
+	compile group: "com.liferay", name: "com.liferay.portal.instance.lifecycle", version: "3.0.0"
+	compile group: "com.liferay", name: "com.liferay.portal.rules.engine.api", version: "2.0.0"
+	compile group: "com.liferay", name: "com.liferay.portal.spring.extender", version: "2.0.0"
+	compile group: "com.liferay", name: "com.liferay.portal.workflow.kaleo.api", version: "2.0.0"
+	compile group: "com.liferay", name: "com.liferay.portal.workflow.kaleo.definition.api", version: "2.0.0"
+	compile group: "com.liferay", name: "com.liferay.portal.workflow.kaleo.runtime.api", version: "2.1.0"
+	compile group: "com.liferay.portal", name: "com.liferay.portal.kernel", version: "2.0.0"
+	compile group: "javax.mail", name: "mail", version: "1.4"
+	compile group: "org.osgi", name: "org.osgi.core", version: "5.0.0"
+	compile group: "org.osgi", name: "org.osgi.service.component.annotations", version: "1.3.0"
+	compile group: "org.springframework", name: "spring-context", version: "4.1.9.RELEASE"
+	compile group: "org.json", name: "json", version: "20160212"
+	compile group: "org.camunda.bpm", name: "camunda-engine", version: "7.2.0"
+	compile group: "org.camunda.bpm", name: "camunda-engine-plugin-connect", version: "7.2.0"
+	compile group: "org.camunda.bpm", name: "camunda-engine-spring", version: "7.2.0"
+}
